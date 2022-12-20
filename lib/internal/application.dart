@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../presentation/home.dart';
+import '../presentation/page/weather_page.dart';
 import '../presentation/settings_page.dart';
-import '../presentation/weather_daily_page.dart';
 
 class Application extends StatelessWidget {
   const Application({super.key});
@@ -17,7 +17,7 @@ class Application extends StatelessWidget {
       ),
       home: const Home(),
       routes: {
-        '/weather_daily': (context) => const WeatherDailyPage(),
+        '/weather_daily': (context) => const WeatherPage(),
         '/settings': (context) => const SettingsPage(),
         '/home': (context) => const Home(),
       },
