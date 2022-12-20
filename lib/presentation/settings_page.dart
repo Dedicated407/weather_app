@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -9,11 +8,32 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+      ),
+      body: _buildBody(),
+    );
   }
 
+  Widget _buildBody() {
+    return Column(children: [
+      const Text(
+        'This is settings!!!!',
+        style: TextStyle(fontSize: 20),
+        textDirection: TextDirection.ltr,
+      ),
+      ElevatedButton(
+        child: const Text(
+          'Apply',
+          style: TextStyle(fontSize: 20),
+        ),
+        onPressed: () {
+          Navigator.pushNamed(context, '/weather_daily');
+        },
+      )
+    ]);
+  }
 }
