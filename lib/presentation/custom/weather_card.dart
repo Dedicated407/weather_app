@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/model/weather_model.dart';
-import 'icon_text.dart';
 
 class WeatherCard extends StatelessWidget {
   final WeatherModel weather;
@@ -11,57 +10,100 @@ class WeatherCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        elevation: 8,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconText(
-                  label: "Дата", value: weather.time, icon: Icons.access_time),
-              const SizedBox(height: 5),
-              const Text("Температура", style: TextStyle(fontSize: 16)),
-              Row(
+      elevation: 8,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+              padding: const EdgeInsets.all(4),
+              child: Row(
                 children: [
-                  IconText(
-                      label: "Max",
-                      value: weather.temperatureMax,
-                      icon: Icons.thermostat),
-                  const SizedBox(height: 10),
-                  IconText(
-                      label: "Min",
-                      value: weather.temperatureMin,
-                      icon: Icons.thermostat),
+                  const Padding(
+                      padding: EdgeInsets.all(2), child: Text("Date:")),
+                  Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(weather.time ?? "Not Found"))
                 ],
-              ),
-              const SizedBox(height: 5),
-              const Text("По ощущениям", style: TextStyle(fontSize: 16)),
-              Row(
+              )),
+          Padding(
+              padding: const EdgeInsets.all(4),
+              child: Row(
                 children: [
-                  IconText(
-                      label: "Max",
-                      value: weather.apparentTemperatureMax,
-                      icon: Icons.thermostat),
-                  const SizedBox(width: 5),
-                  IconText(
-                      label: "Min",
-                      value: weather.apparentTemperatureMin,
-                      icon: Icons.thermostat),
+                  const Padding(
+                      padding: EdgeInsets.all(2), child: Text("Weather:")),
+                  Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(weather.weatherCode ?? "Not Found"))
                 ],
-              ),
-              const SizedBox(height: 5),
-              const Text("Ветер", style: TextStyle(fontSize: 16)),
-              Column(
+              )),
+          Padding(
+              padding: const EdgeInsets.all(4),
+              child: Row(
                 children: [
-                  IconText(
-                      label: "Скорость",
-                      value: weather.windSpeed,
-                      icon: Icons.speed),
+                  const Padding(
+                      padding: EdgeInsets.all(2), child: Text("Temperature Max:")),
+                  Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(weather.temperatureMax ?? "Not Found"))
                 ],
-              ),
-            ],
-          ),
-        ));
+              )),
+          Padding(
+              padding: const EdgeInsets.all(4),
+              child: Row(
+                children: [
+                  const Padding(
+                      padding: EdgeInsets.all(2), child: Text("Temperature Min:")),
+                  Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(weather.temperatureMin ?? "Not Found"))
+                ],
+              )),
+          Padding(
+              padding: const EdgeInsets.all(4),
+              child: Row(
+                children: [
+                  const Padding(
+                      padding: EdgeInsets.all(2), child: Text("Apparent temperature Max:")),
+                  Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(weather.apparentTemperatureMax ?? "Not Found"))
+                ],
+              )),
+          Padding(
+              padding: const EdgeInsets.all(4),
+              child: Row(
+                children: [
+                  const Padding(
+                      padding: EdgeInsets.all(2), child: Text("Apparent temperature Min:")),
+                  Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(weather.apparentTemperatureMin ?? "Not Found"))
+                ],
+              )),
+          Padding(
+              padding: const EdgeInsets.all(4),
+              child: Row(
+                children: [
+                  const Padding(
+                      padding: EdgeInsets.all(2), child: Text("Precipitation sum:")),
+                  Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(weather.precipitationSum ?? "Not Found"))
+                ],
+              )),
+          Padding(
+              padding: const EdgeInsets.all(4),
+              child: Row(
+                children: [
+                  const Padding(
+                      padding: EdgeInsets.all(2), child: Text("Wind speed:")),
+                  Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(weather.windSpeed ?? "Not Found"))
+                ],
+              )),
+        ],
+      ),
+    );
   }
 }

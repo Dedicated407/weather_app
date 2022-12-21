@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../presentation/home.dart';
-import '../presentation/page/weather_page.dart';
+import '../presentation/page/weather_daily/weather_page.dart';
 import '../presentation/settings_page.dart';
 
 class Application extends StatelessWidget {
@@ -15,11 +14,10 @@ class Application extends StatelessWidget {
         backgroundColor: _materialColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const Home(),
+      home: const WeatherPage(),
       routes: {
         '/weather_daily': (context) => const WeatherPage(),
         '/settings': (context) => const SettingsPage(),
-        '/home': (context) => const Home(),
       },
     );
   }

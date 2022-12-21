@@ -19,21 +19,13 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   Widget _buildBody() {
-    return Column(children: [
-      const Text(
+    return Center(
+        child: Column(children: const [
+      Text(
         'This is settings!!!!',
         style: TextStyle(fontSize: 20),
         textDirection: TextDirection.ltr,
       ),
-      ElevatedButton(
-        child: const Text(
-          'Apply',
-          style: TextStyle(fontSize: 20),
-        ),
-        onPressed: () {
-          Navigator.pushNamed(context, '/weather_daily');
-        },
-      )
-    ]);
+    ]));
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/weather_bloc.dart';
-import '../bloc/weather_state.dart';
-import '../weather_daily_page.dart';
+import '../../bloc/weather_bloc.dart';
+import '../../bloc/weather_state.dart';
+import '../../weather_daily_page.dart';
+import '../home/home_view.dart';
 
 class WeatherView extends StatefulWidget {
   const WeatherView({Key? key}) : super(key: key);
@@ -18,10 +19,18 @@ class _WeatherViewState extends State<WeatherView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          "Weather daily info",
+        title: const Text('Weather application!',
           style: TextStyle(fontSize: 18),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Settings',
+            onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            },
+          )
+        ],
       ),
       body: SizedBox.expand(
         child: BlocConsumer<WeatherListBloc, WeatherState>(
@@ -30,7 +39,7 @@ class _WeatherViewState extends State<WeatherView> {
             if (state is WeatherLoaded) {
               return WeatherDailyView(weatherList: state.list);
             } else {
-              return const WeatherDailyView(weatherList: []);
+              return const HomeView();
             }
           },
         ),

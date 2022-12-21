@@ -7,11 +7,12 @@ import '../../domain/usecase/weather_use_case.dart';
 class WeatherListBloc extends Bloc<WeatherEvent, WeatherState> {
   final WeatherListUseCase useCase;
 
-  WeatherListBloc({required this.useCase}) : super(WeatherInitial()) {
-    on<GetWeatherEvent>(_getDataEvent);
+  WeatherListBloc({required this.useCase}) : super(WeatherLoading()) {
+    on<WeatherEventImpl>(_getDataEvent);
+    on<WeatherDropEventImpl>(_dropDataEvent);
   }
 
-  _getDataEvent(GetWeatherEvent event, emit) async {
+  _getDataEvent(WeatherEventImpl event, emit) async {
     emit(WeatherLoading());
 
     final result = await useCase.getWeatherList(
@@ -19,5 +20,9 @@ class WeatherListBloc extends Bloc<WeatherEvent, WeatherState> {
     );
 
     emit(WeatherLoaded(list: result));
+  }
+
+  _dropDataEvent(WeatherDropEventImpl event, emit) async {
+    emit(WeatherLoading());
   }
 }

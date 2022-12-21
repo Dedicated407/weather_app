@@ -3,12 +3,20 @@ import 'package:flutter/cupertino.dart';
 
 @immutable
 abstract class WeatherEvent extends Equatable {
-  String latitude = "0.0";
-  String longitude = "0.0";
 }
 
-class GetWeatherEvent extends WeatherEvent {
-  GetWeatherEvent();
+class WeatherEventImpl extends WeatherEvent {
+  String latitude;
+  String longitude;
+
+  WeatherEventImpl({this.latitude = "0.0", this.longitude = "0.0"});
+
+  @override
+  List<Object?> get props => [];
+}
+
+class WeatherDropEventImpl extends WeatherEvent {
+  WeatherDropEventImpl();
 
   @override
   List<Object?> get props => [];

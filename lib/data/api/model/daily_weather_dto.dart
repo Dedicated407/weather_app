@@ -1,7 +1,7 @@
 import '../../../domain/model/weather_model.dart';
 
 class DailyWeatherDTO {
-  List<int>? time;
+  List<String>? time;
   List<int>? weatherCode;
   List<double>? temperature2mMax;
   List<double>? temperature2mMin;
@@ -22,14 +22,14 @@ class DailyWeatherDTO {
   });
 
   DailyWeatherDTO.fromJson(Map<String, dynamic> json) {
-    time = json['time'].cast<int>();
-    weatherCode = json['weathercode'].cast<int>();
-    temperature2mMax = json['temperature_2m_max'].cast<double>();
-    temperature2mMin = json['temperature_2m_min'].cast<double>();
-    apparentTemperatureMax = json['apparent_temperature_max'].cast<double>();
-    apparentTemperatureMin = json['apparent_temperature_min'].cast<double>();
-    precipitationSum = json['precipitation_sum'].cast<double>();
-    windspeed10mMax = json['windspeed_10m_max'].cast<double>();
+    time = json['daily']['time'].cast<String>();
+    weatherCode = json['daily']['weathercode'].cast<int>();
+    temperature2mMax = json['daily']['temperature_2m_max'].cast<double>();
+    temperature2mMin = json['daily']['temperature_2m_min'].cast<double>();
+    apparentTemperatureMax = json['daily']['apparent_temperature_max'].cast<double>();
+    apparentTemperatureMin = json['daily']['apparent_temperature_min'].cast<double>();
+    precipitationSum = json['daily']['precipitation_sum'].cast<double>();
+    windspeed10mMax = json['daily']['windspeed_10m_max'].cast<double>();
   }
 
   List<WeatherModel> toDomain() {
@@ -38,14 +38,14 @@ class DailyWeatherDTO {
     for (var i = 0; i < (time?.length ?? 0); i++) {
       result.add(WeatherModel(
           id: i,
-          time: "${time![i]}",
-          weatherCode: "${weatherCode?[i]} - код погоды",
+          time: time![i],
+          weatherCode: "${weatherCode?[i]}",
           temperatureMax: "${temperature2mMax?[i]} °C",
           temperatureMin: "${temperature2mMin?[i]} °C",
           apparentTemperatureMax: "${apparentTemperatureMax?[i]} °C",
           apparentTemperatureMin: "${apparentTemperatureMin?[i]} °C",
-          precipitationSum: "${precipitationSum?[i]} мм",
-          windSpeed: "${windspeed10mMax?[i]} м/c"));
+          precipitationSum: "${precipitationSum?[i]} mm",
+          windSpeed: "${windspeed10mMax?[i]} km/h"));
     }
 
     return result;

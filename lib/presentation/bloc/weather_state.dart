@@ -8,11 +8,6 @@ abstract class WeatherState extends Equatable {
   const WeatherState();
 }
 
-class WeatherInitial extends WeatherState {
-  @override
-  List<Object> get props => [];
-}
-
 class WeatherLoading extends WeatherState {
   @override
   List<Object> get props => [];
