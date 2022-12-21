@@ -13,9 +13,11 @@ class WeatherListBloc extends Bloc<WeatherEvent, WeatherState> {
 
   _getDataEvent(GetWeatherEvent event, emit) async {
     emit(WeatherLoading());
-    final result = await useCase.get(
-        double.parse(event.latitude),
-        double.parse(event.longitude));
+
+    final result = await useCase.getWeatherList(
+        double.parse(event.latitude), double.parse(event.longitude)
+    );
+
     emit(WeatherLoaded(list: result));
   }
 }

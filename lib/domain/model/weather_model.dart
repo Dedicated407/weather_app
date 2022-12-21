@@ -1,7 +1,7 @@
 class WeatherModel {
   final int id;
-  final String? weatherCode;
   final String? time;
+  final String? weatherCode;
   final String? temperatureMax;
   final String? temperatureMin;
   final String? apparentTemperatureMax;
@@ -11,8 +11,8 @@ class WeatherModel {
 
   WeatherModel({
     required this.id,
-    required this.weatherCode,
     required this.time,
+    required this.weatherCode,
     required this.temperatureMax,
     required this.temperatureMin,
     required this.apparentTemperatureMax,

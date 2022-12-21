@@ -1,6 +1,6 @@
 import '../model/weather_model.dart';
 
-abstract class Repository {
+abstract class WeatherRepository {
   Future<List<WeatherModel>> getWeatherList(
       {
         required double latitude,
